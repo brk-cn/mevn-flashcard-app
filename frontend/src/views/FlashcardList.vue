@@ -1,7 +1,6 @@
 <template>
   <div class="flashcard-list">
-    <button @click="goHome">Home</button>
-    <h1>Flashcard List</h1>
+    <Header :title="'Flashcard List'" />
     <table>
       <thead>
         <tr>
@@ -32,11 +31,15 @@
 </template>
 
 <script>
+import Header from '../components/Header.vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 
 export default {
   name: 'FlashcardList',
+    components: {
+    Header
+  },
   data() {
     return {
       flashcards: []

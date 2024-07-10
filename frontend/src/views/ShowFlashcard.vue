@@ -1,19 +1,24 @@
 <template>
   <div class="flashcard-viewer">
-    <button @click="prevFlashcard" :disabled="currentFlashcardIndex === 0">‹</button>
-    <Flashcard v-if="flashcards.length" :flashcard="flashcards[currentFlashcardIndex]" />
-    <button @click="nextFlashcard" :disabled="currentFlashcardIndex === flashcards.length - 1">›</button>
+    <Header :title="''" />
+    <div class="flashcards">
+      <button @click="prevFlashcard" :disabled="currentFlashcardIndex === 0">‹</button>
+      <Flashcard v-if="flashcards.length" :flashcard="flashcards[currentFlashcardIndex]" />
+      <button @click="nextFlashcard" :disabled="currentFlashcardIndex === flashcards.length - 1">›</button>
+    </div>
   </div>
 </template>
 
 <script>
+import Header from '../components/Header.vue';
 import axios from 'axios';
 import Flashcard from '../components/Flashcard.vue';
 
 export default {
   name: 'ShowFlashcard',
   components: {
-    Flashcard
+    Flashcard,
+    Header
   },
   data() {
     return {
@@ -54,6 +59,12 @@ export default {
 <style scoped>
 .flashcard-viewer {
   height: 100vh;
+  margin: auto;
+  padding: 20px;
+}
+
+.flashcards {
+  height: 75%;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,6 +1,6 @@
 <template>
   <div class="add-flashcard">
-    <h1>Add Flashcard</h1>
+    <Header :title="'Add Flashcard'" />
     <form @submit.prevent="submitForm">
       <div class="form-group">
         <label for="word">Word:</label>
@@ -28,10 +28,14 @@
 </template>
 
 <script>
+import Header from '../components/Header.vue';
 import axios from 'axios';
 
 export default {
   name: 'AddFlashcard',
+  components: {
+    Header
+  },
   data() {
     return {
       flashcard: {
@@ -63,7 +67,6 @@ export default {
 
 <style scoped>
 .add-flashcard {
-  max-width: 600px;
   margin: auto;
   padding: 20px;
 }
